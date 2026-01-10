@@ -24,11 +24,11 @@ For this workshop, we recommend using **Anaconda**, a Python distribution that s
 ### **Python Notebook for Class**  
 You can access the Python notebook used during the session via Google Colab or GitHub:
 
-- [**GitHub Repository Link Session 1**](https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/Python%20Sessions/1-%20Intro%20Python%20-%20Session%201.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/Python%20Sessions/1-%20Intro%20Python%20-%20Session%201.ipynb)
+- [**GitHub Repository Link Session 1**](https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/Python%20Sessions/1-%20Intro%20Python%20-%20Session%201.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/Python%20Sessions/1-%20Intro%20Python%20-%20Session%201.ipynb)
  
-- [**GitHub Repository Link Session 2**](https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/Python%20Sessions/2-%20Intro%20Python%20-%20Session%202.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/Python%20Sessions/2-%20Intro%20Python%20-%20Session%202.ipynb)
+- [**GitHub Repository Link Session 2**](https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/Python%20Sessions/2-%20Intro%20Python%20-%20Session%202.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/Python%20Sessions/2-%20Intro%20Python%20-%20Session%202.ipynb)
 
-- [**GitHub Repository Link Session 3**](https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/Python%20Sessions/3-%20Intro%20Python%20-%20Session%203.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/Python%20Sessions/3-%20Intro%20Python%20-%20Session%203.ipynb)
+- [**GitHub Repository Link Session 3**](https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/Python%20Sessions/3-%20Intro%20Python%20-%20Session%203.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/Python%20Sessions/3-%20Intro%20Python%20-%20Session%203.ipynb)
 
 
 
