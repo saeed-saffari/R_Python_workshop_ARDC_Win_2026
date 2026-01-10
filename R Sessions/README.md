@@ -19,7 +19,7 @@ To get started with R and RStudio, follow these steps:
 
 ### **R Markdown File for Class**  
 Click the link below to access the R Markdown (`.Rmd`) file we will use during the workshop session:  
-- [Download R Workshop RMarkdown File](https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/R%20Sessions/Intro_R_ARDC_Winter_2025.Rmd)
+- [Download R Workshop RMarkdown File](https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/R%20Sessions/Intro_R_ARDC_Winter_2026.Rmd)
 - [Direct link to RMarkdown File on RStudio Cloud](https://posit.cloud/content/9519888)
 
 ---
