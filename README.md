@@ -58,4 +58,4 @@ Click here to access [**Python Workshop Materials**](https://github.com/saeed-sa
 To get started with the workshop materials, follow these steps:
 1. **Download the repository**: Click on the green `Code` button and choose `Download ZIP`, or clone the repository using Git:
    ```bash
-   git clone https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2025.git
+   git clone https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2026.git
