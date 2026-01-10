@@ -6,7 +6,7 @@ Welcome to the **R and Python Workshop** hosted by the Atlantic Research Data Ce
 
 ## **Workshop Poster**
 
-<img src = "https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/Workshop.png?raw=true" width="400" >
+<img src = "https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/Workshop.png?raw=true" width="400" >
 
 
 ---
@@ -29,7 +29,7 @@ Welcome to the **R and Python Workshop** hosted by the Atlantic Research Data Ce
 ## **Workshop Sections**  
 
 ### **R Workshop Sessions**  
-<img src = "https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/R.png?raw=true" width="400" >
+<img src = "https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/R.png?raw=true" width="400" >
 
 
 The R section covers:
@@ -41,7 +41,7 @@ Click here to access [**R Workshop Materials**](https://github.com/saeed-saffari
 ---
 
 ### **Python Workshop Sessions**  
-<img src = "https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2025/blob/main/Python.png?raw=true" width="400" >
+<img src = "https://github.com/saeed-saffari/R_Python_workshop_ARDC_Win_2026/blob/main/Python.png?raw=true" width="400" >
 
 
 The Python section covers:
