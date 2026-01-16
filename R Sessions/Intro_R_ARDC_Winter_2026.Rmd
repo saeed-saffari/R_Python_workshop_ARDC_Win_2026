@@ -282,6 +282,17 @@ x <- c('Male', "Female", "Male", 'Male', "Female")
 
 ```
 
+
+## Practice:
+
+Given a list of students `("Alice", "Bob", "Charlie", "David", "Eve")` and their corresponding scores `(85, 92, 78, 55, 88)`, extract the names and scores of students who passed (`score >= 60`). Also, calculate the mean score of the students who passed.
+
+```{r}
+students <- c("Alice", "Bob", "Charlie", "David", "Eve")
+scores <- c(85, 92, 78, 55, 88)
+
+```
+
 \newpage
 # Matrix
 
