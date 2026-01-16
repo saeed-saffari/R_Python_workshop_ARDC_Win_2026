@@ -1,0 +1,395 @@
+---
+title: |
+  Introduction to R
+author:
+- "[Saeed Saffari](https://www.saeedsaffari.com)\\
+[Saeed.Saffari@dal.ca](mailto: Saeed.Saffari@dal.ca)"
+organization: Dalhousie University
+date: Winter 2026
+output:
+  html_notebook:
+    toc: yes
+    toc_depth: 5
+    number_sections: true
+  html_document: 
+    toc: yes
+    toc_depth: 5
+    number_sections: true
+  pdf_document:
+    
+    toc: yes
+    toc_depth: 5
+    number_sections: true
+---
+
+\newpage
+
+# Introduction
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter* (on Mac) or *Ctrl+Shift+Enter* (on Windows).
+
+```{r}
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I* (on Mac) or *Ctrl+Alt+I* (on Windows).
+
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+You can download and install packages with `install.packages("The name of package")`.
+
+## Markdown:
+
+
+\newpage
+
+# Basic of learning
+
+In this part we talk about basic elements of R programming.
+
+## How to Print
+
+```{r}
+
+```
+
+## Data Types (Classes)
+
+In R, data types (or classes) define the kind of data stored in variables. Here are the most common data types in R:
+
+| **Class**   | **Description**                           | **Example**               | **Code Example**                 |
+|:------------|:------------------------------------------|:-------------------------|:----------------------------------|
+| `numeric`   | Represents decimal or whole numbers        | 3.14, 42, -7.8            | `x <- 3.14; class(x)`             |
+| `character` | Represents text strings                    | "Hello", "R Programming"  | `z <- "Hello"; class(z)`          |
+| `logical`   | Represents Boolean values (TRUE or FALSE)  | TRUE, FALSE               | `is_valid <- TRUE; class(is_valid)` |
+| `complex`   | Represents complex numbers                 | 2+3i, 1-4i                | `c <- 2 + 3i; class(c)`           |
+| `list`      | Represents a collection of different types | A list of numbers, text   | `lst <- list(1, "Hello", TRUE); class(lst)` |
+
+```{r}
+
+```
+
+## Arithmetic Operators
+
+| Symbol | Task Performed |
+|:----:|:---:|
+| +  | Addition |
+| -  | Subtraction |
+| /  | division |
+| *  | multiplication |
+| **  | to the power of |
+| ^  | to the power of |
+| %%  | modulus |
+| %/%  | floor division |
+
+
+```{r}
+
+
+```
+
+**We can save values in variables:**
+```{r}
+
+```
+
+In R programming, code runs line by line, with only the last assignment determining the final value of a variable.
+
+```{r}
+
+```
+
+
+## Relational Operators
+
+| Symbol | Task Performed |
+|:----:  |:---:|
+|<-	     |Assignment|
+|=	     |Assignment|
+|assign()|Assignment|
+|==      |True, if it is equal|
+|!=      |True, if not equal to|
+|<	     |less than|
+|>	     |greater than|
+|<=      |less than or equal to|
+|>=      |greater than or equal to|
+
+
+```{r}
+
+```
+
+**you can use below command to get special values:**
+
+```{r}
+
+```
+
+**you can write comment with # :**
+```{r}
+
+```
+
+**you can creat sequence numbers with below command:**
+
+This work like *arange* in numpy pakage in Python
+```{r}
+
+```
+This work like *linspace* in numpy pakage in Python
+```{r}
+
+```
+
+Replicate function:
+```{r}
+
+```
+
+
+## Loops
+### if , elif
+
+```{r}
+
+```
+
+### for loops
+
+```{r}
+
+```
+
+
+### while loops
+
+
+```{r}
+
+```
+
+
+**Use break and next in loops**
+
+```{r}
+
+```
+
+
+
+## function
+```{r}
+
+```
+
+
+\newpage
+# Vetors
+The most common way to creat vectors is to use function `c()`.
+```{r}
+
+```
+
+**Join vectors**
+
+```{r}
+
+```
+
+You can find _lenght_ of vectors with _lenght()_ function:
+```{r}
+
+```
+
+## Vector Indexing
+
+```{r}
+
+```
+Use for loops for access to elemets of vectors
+
+```{r}
+
+```
+Use index:
+```{r}
+
+```
+
+## Matching Operator
+
+```{r}
+
+```
+## Vector Arithmetic's
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+## Vector Methods
+
+```{r}
+
+```
+
+```{r}
+
+```
+## Logical Vector
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+## Factors
+- Used to represent categorical data
+- Treated as integer vector, having a label
+- Factors are self describing
+
+```{r}
+x <- c('Male', "Female", "Male", 'Male', "Female")
+```
+
+## Mathematical Function in R
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+## Random Number in R
+
+```{r} 
+
+```
+
+\newpage
+# Matrix
+
+## Creat Matrix
+
+Matrix are 2-dimentsional vectors and Dimensianal attribute is of lenght 2 (rows and columns). We should to know that Matrix contain elemts of same type.
+
+```{r}
+
+```
+
+## Matrix diag
+
+like `numpy.full` in python
+
+```{r}
+
+```
+
+like `numpy.diag` in python
+
+```{r}
+
+```
+
+for find the elements of diagonal of matrix:
+
+```{r}
+
+```
+
+## Matrix: Naming Rows & Columns
+
+```{r}
+
+```
+
+## Matrix Indexing
+
+Indexing in R programming is similar to Python.
+
+```{r}
+
+```
+
+You can change values in matrix.
+
+```{r}
+
+```
+## Matrix: `rbine()` and `cbind()` functions
+
+You can combine matrices with `rbine()` and `cbind()` functions. 
+
+At first, we want to combine the matrices from the row.
+```{r}
+
+```
+After that, we want to combine the matrices from the columns.
+
+```{r}
+
+```
+
+Relational Operators in Matrics:
+
+```{r}
+A <- matrix(c(1,2,3,4,5,6,8,9,1) , nrow=3, ncol=3, byrow=TRUE)
+B <- matrix(c(3,1,2,4,2,1,5,1,2), nrow=3, ncol=3, byrow=TRUE)
+
+
+```
+
+ 
+Like `numpy.transpose()` or `.T` in python
+
+```{r}
+A <- matrix(c(1,2,3,4,5,6,8,9,1,4,2,3) , nrow=3, ncol=4, byrow=TRUE)
+
+```
+## Matrix Specific Functions
+
+```{r}
+
+```
+
+\newpage
+# Lists
+
+## Creat list
+`Lists` are also collecting of data and another kind of data storage. Lists can contain elemnts of any type of R object and these elements of list don't need be same type. You can creat list by using `list()` function.
+
+```{r}
+
+```
+Creat list with vectors
+```{r}
+
+```
+
+## List subset Operator
+
+```{r}
+
+```
+
+## Lists Concatenation
+
+```{r}
+
+```
