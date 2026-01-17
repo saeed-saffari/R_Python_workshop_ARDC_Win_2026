@@ -7,8 +7,7 @@ author:
 organization: Dalhousie University
 date: Winter 2026
 output:
-  pdf_document:
-    
+  html_notebook:
     toc: yes
     toc_depth: 5
     number_sections: true
@@ -16,7 +15,8 @@ output:
     toc: yes
     toc_depth: 5
     number_sections: true
-  html_notebook:
+  pdf_document:
+    
     toc: yes
     toc_depth: 5
     number_sections: true
@@ -949,3 +949,451 @@ scores <- c(98.45, 45.65, 78.79)
 
 
 ```
+
+
+
+\newpage
+# Dataframe
+
+Dataframes are objects in R and used to store tabular data. Unlike a matrix in data frame each column can contain different modes of data. The first column can be numeric while the second column can be character and third column can be logical. It is a list of vectors of equal length. Dataframe can be created using `data.frame()` function or imported from various file types. 
+
+  - `read.table()``
+  - `read.csv()``
+
+## Creating Dataframes
+
+```{r}
+
+```
+
+## Dataframes Indexing
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+## Dataframes `subset()` function for filtering
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+## Dataframes `rbine()` and `cbind()`
+
+```{r}
+
+```
+add rows
+
+```{r}
+
+```
+add columns
+
+```{r}
+
+```
+
+## Saving data in csv
+
+```{r}
+
+```
+
+
+
+## Missing Data
+
+In this part we find out how handle a missing data like `NA`.
+
+This function is like `.isnull()` in python programming.
+
+```{r}
+
+```
+
+Remove missing values
+
+```{r}
+
+```
+
+```{r}
+weather <- data.frame(
+  id = c(101, 102, 103, 104, 105),
+  temperature = c(25.8, 34.2, NA, 27.4, 20.5),
+  wind = c(78, 59, 63, 40, 68),
+  humidity = c(25, 45, 85, NA, 61)
+)
+#weather
+```
+
+```{r}
+
+```
+
+
+Mean
+```{r}
+
+```
+
+fix value
+```{r}
+
+```
+
+interpolation
+```{r}
+# Install and load imputeTS package
+# install.packages("imputeTS")
+library(imputeTS)
+
+# Fill missing values with linear interpolation
+
+```
+
+\newpage
+# Dplyr Package
+
+You can download and install packages with install.packages("The name of package"). In this case, run `install.packages('dplyr')` to download and install `dplyr` package.
+
+Also, you can import packages in R with `library()` function.
+
+```{r}
+# install.packages("dplyr")
+
+library(dplyr)
+```
+
+Data is imported in to dataframes using: `read.csv()`
+
+`read.csv()` arguments:
+
+  - **file:** name of the file (mandatory argument)
+  - **header:** logical value (default is false)
+  - **sep:** separator (default is comma (`,`))
+  
+
+```{r}
+
+```
+
+you can see head or tail of data with below function. It's work like `.head()` and `.tail()` in Pandas package in python.
+
+```{r}
+
+```
+
+like `.shape` in pandas package in python
+
+```{r}
+
+```
+
+like `.describe()` in pandas package in python for understand structure of data:
+```{r}
+
+```
+
+## dplyr `select()` function
+
+**Select special columns**
+
+Select with number of columns:
+```{r}
+
+```
+
+Select with name of columns:
+```{r}
+
+```
+for get names of columns, you can use below function. This work like `.columns` in pandas package in Python.
+
+```{r}
+
+```
+
+Also you can select range of columns:
+
+```{r}
+
+```
+
+You can drop columns with use minus sign (`-`) in `select` function.
+
+```{r}
+
+```
+
+## dplyr `filter()` function
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+  ## dplyr `arrange()` function
+```{r}
+
+```
+
+```{r}
+# for descending order
+
+```
+
+## dplyr `rename()` function
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+## dplyr `mutate()` function
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+### Practice:
+Import the data and create a new column called murder_rate that shows the murder rate (murders per million people)
+
+```{r}
+
+
+```
+
+
+
+  
+## dplyr `group_by()` function
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+## dplyr Pipe Operator %>%
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+### Practice:
+Find the states with a population greater than 10 million and murders greater than 500. Display only the state, population, and murder columns.
+
+```{r}
+
+```
+
+
+
+
+\newpage
+# Data Visualization with `dplyr`
+
+## Bar Graphs
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+```
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+**Horizontsl Bar Graphs**
+
+```{r}
+
+```
+
+
+## Histogram
+
+```{r}
+
+```
+
+## Scatter Plots
+
+The default of `plot` functions is Scatter plot.
+
+```{r}
+
+```
+
+
+**pch values**
+
+Values of pch are stored internally as integers.
+
+![Some values of pch](/Users/saeed/Documents/Work/Python Courses Contents/Fall 2021/untitled folder/pch values.png)
+
+
+## Line Graphs
+
+```{r}
+
+```
+
+**`type` in `plot` function**
+
+ - **"p"** for points,
+ - **"l"** for lines,
+ - **"b"** for both points and lines,
+ - **"c"** for empty points joined by lines, 
+ - **"o"** for overplotted points and lines,
+ - **"s"** and **"S"** for stair steps,
+ - **"h"** for histogram-like vertical lines,
+ - **"n"** does not produce any points or lines.
+
+
+## Box plots
+```{r}
+
+```
+
+## Multiple Plots in Layout
+
+```{r}
+
+
+```
+
+```{r}
+
+```
+\newpage
+# Regressions and Models
+
+## Simple Linear Regression
+Linear regression is used to model the relationship between a dependent variable and one or more independent variables by fitting a line through the data.
+
+```{r}
+
+```
+
+## Multiple linear regression
+Multiple regression extends linear regression by adding more independent variables to better predict the dependent variable.
+
+```{r}
+
+```
+
+#### Practice:
+Add `region` (as a categorical variable) to the multiple regression model.
+
+```{r}
+# Multiple regression model
+
+
+```
+
+
+### t-test (Comparing Means)
+A t-test compares the means of two groups to determine if they are statistically different.
+
+
+```{r}
+# Perform a t-test comparing murders between two regions
+#region1 <- df[df$region == "Northeast", "murders"]
+#region2 <- df[df$region == "South", "murders"]
+#t_test_result <- t.test(region1, region2)
+#print(t_test_result)
+```
+
+
+### Correlation Test
+A correlation test checks the strength and direction of the relationship between two variables.
+
+```{r}
+# Correlation test between population and murders
+#cor_test_result <- cor.test(df$population, df$murders)
+#print(cor_test_result)
+```
+
+#### Practice
+
+```{r}
+# Correlation test gunownership vs murders
+
+```
+
+
+ 
+###  Regression Plots
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
