@@ -7,7 +7,8 @@ author:
 organization: Dalhousie University
 date: Winter 2026
 output:
-  html_notebook:
+  pdf_document:
+    
     toc: yes
     toc_depth: 5
     number_sections: true
@@ -15,8 +16,7 @@ output:
     toc: yes
     toc_depth: 5
     number_sections: true
-  pdf_document:
-    
+  html_notebook:
     toc: yes
     toc_depth: 5
     number_sections: true
@@ -939,16 +939,27 @@ Create a 4x4 matrix of random integers between 1 and 100.
 `Lists` are also collecting of data and another kind of data storage. Lists can contain elemnts of any type of R object and these elements of list don't need be same type. You can creat list by using `list()` function.
 
 ```{r}
-
+x <- list(10, 'Saeed', TRUE)
+x
 ```
 Creat list with vectors
 ```{r}
-classno <- c(101,102,103)
+id <- c(101,102,103)
 name <- c("Sanaz", "Saeed", "Sarah")
 scores <- c(98.45, 45.65, 78.79)
 
-
+students = list(id, names, scores)
+students
 ```
+
+```{r}
+students[2]
+```
+
+
+
+
+
 
 
 
@@ -963,50 +974,112 @@ Dataframes are objects in R and used to store tabular data. Unlike a matrix in d
 ## Creating Dataframes
 
 ```{r}
-
+id <- c(101,102,103,104,105)
+names <- c("Sanaz", 'Saeed', 'James', "Peter", 'Sarah')
+scores <- c(98.5, 45.65, 78.79, 56.32, 87.3)
+students <- data.frame(id, names, scores)
+students
 ```
 
 ## Dataframes Indexing
 
 ```{r}
-
+students
 ```
 
 ```{r}
-
+students[1,]
 ```
+
+```{r}
+students[,2]
+```
+
+
+```{r}
+students[2,3]
+```
+```{r}
+students$scores
+```
+
+```{r}
+students$names[3]
+```
+```{r}
+students[,2:3]
+```
+
 
 
 ## Dataframes `subset()` function for filtering
 
 ```{r}
-
+students
 ```
 
 ```{r}
-
+report <- subset(students, scores < 60)
+report
 ```
+
+```{r}
+report <- subset(students, scores < 60 & id <=103)
+report
+```
+
+
+```{r}
+report <- subset(students, scores < 60 | id <=103)
+report
+```
+
+```{r}
+report <- subset(students, scores < 60, select = c(names))
+report
+```
+
+```{r}
+report <- subset(students, scores < 60, select = c(names, id))
+report
+```
+```{r}
+report <- subset(students, scores < 60, select = c(-names))
+report
+```
+
 
 ## Dataframes `rbine()` and `cbind()`
 
 ```{r}
-
+students
 ```
 add rows
 
 ```{r}
+students <- rbind(students, data.frame(id=106, names="Ema", scores=68.12))
+students
 
 ```
 add columns
 
 ```{r}
-
+students <- cbind(students, age = c(18,24,19,26,34,23))
 ```
+
+```{r}
+students
+```
+
+
 
 ## Saving data in csv
 
 ```{r}
-
+students
+```
+```{r}
+write.csv(students, file = 'scoring.csv')
 ```
 
 
@@ -1018,13 +1091,31 @@ In this part we find out how handle a missing data like `NA`.
 This function is like `.isnull()` in python programming.
 
 ```{r}
+x <- c(10,4, NA, 7, 15, NaN)
+x
+```
 
+```{r}
+is.na(x)
+```
+```{r}
+is.nan(x)
 ```
 
 Remove missing values
 
 ```{r}
+x <- c(10,4, NA, 7, 15, NaN)
+x
+```
 
+```{r}
+y <- is.na(x)
+y
+```
+
+```{r}
+x[!y]
 ```
 
 ```{r}
@@ -1034,22 +1125,32 @@ weather <- data.frame(
   wind = c(78, 59, 63, 40, 68),
   humidity = c(25, 45, 85, NA, 61)
 )
-#weather
+weather
 ```
 
 ```{r}
+weatherNA <- complete.cases(weather)
+weatherNA
+```
 
+```{r}
+weather[weatherNA,]
 ```
 
 
 Mean
 ```{r}
-
+weather
+```
+```{r}
+weather$temperature[is.na(weather$temperature)] <- mean(weather$temperature, na.rm = TRUE)
+weather
 ```
 
 fix value
 ```{r}
-
+weather$humidity[is.na(weather$humidity)] <- 60
+weather
 ```
 
 interpolation
@@ -1059,8 +1160,24 @@ interpolation
 library(imputeTS)
 
 # Fill missing values with linear interpolation
-
+weather <- data.frame(
+  id = c(101, 102, 103, 104, 105),
+  temperature = c(25.8, 34.2, NA, 27.4, 20.5),
+  wind = c(78, 59, 63, 40, 68),
+  humidity = c(25, 45, 85, NA, 61)
+)
+weather
 ```
+
+```{r}
+weather$temperature <- na_interpolation(weather$temperature)
+weather$humidity <- na_interpolation(weather$humidity)
+weather
+```
+```{r}
+print(weather)
+```
+
 
 \newpage
 # Dplyr Package
@@ -1085,24 +1202,29 @@ Data is imported in to dataframes using: `read.csv()`
   
 
 ```{r}
-
+library(dplyr)
+df <- read.csv("murders.csv")
+df
 ```
 
 you can see head or tail of data with below function. It's work like `.head()` and `.tail()` in Pandas package in python.
 
 ```{r}
-
+head(df, 5)
+```
+```{r}
+tail(df, 10)
 ```
 
 like `.shape` in pandas package in python
 
 ```{r}
-
+dim(df)
 ```
 
 like `.describe()` in pandas package in python for understand structure of data:
 ```{r}
-
+str(df)
 ```
 
 ## dplyr `select()` function
@@ -1111,125 +1233,195 @@ like `.describe()` in pandas package in python for understand structure of data:
 
 Select with number of columns:
 ```{r}
-
+df
 ```
-
+```{r}
+df[c(2,4,5)]
+```
 Select with name of columns:
 ```{r}
-
+df[c('state', "population", 'murders')]
 ```
+
+```{r}
+df_prime <- select(df, 'state', "region", "murders", "population")
+df_prime
+```
+
 for get names of columns, you can use below function. This work like `.columns` in pandas package in Python.
 
 ```{r}
-
+names(df)
 ```
 
 Also you can select range of columns:
 
 ```{r}
-
+dfprime <- select(df, state:population)
+dfprime
 ```
 
 You can drop columns with use minus sign (`-`) in `select` function.
 
 ```{r}
-
+dfprime <- select(df, -abb)
+dfprime
 ```
+
+```{r}
+dfprime <- select(df, - c(abb, murders, gunmurders))
+dfprime
+```
+```{r}
+dfprime <- select(df, - (abb:murders))
+dfprime
+```
+
 
 ## dplyr `filter()` function
 
 ```{r}
-
+head(df)
 ```
 
 ```{r}
-
+names(df)
+```
+```{r}
+dim(df)
 ```
 
 ```{r}
+dfprime <- filter(df, murders > 500)
+dfprime
+```
+```{r}
+dim(dfprime)
+```
 
+```{r}
+dfprime <- filter(df, murders > 500 & population > 10000000)
+dfprime
+```
+```{r}
+dim(dfprime)
 ```
 
   ## dplyr `arrange()` function
 ```{r}
+head(df)
+```
+```{r}
+names(df)
+```
 
+```{r}
+dfprime <- arrange(df, murders)
+dfprime
 ```
 
 ```{r}
 # for descending order
-
+dfprime <- arrange(df, desc(population))
+dfprime
 ```
 
 ## dplyr `rename()` function
 
 ```{r}
-
+names(df)
 ```
 
 ```{r}
-
+df2 <- rename(df, abbreviation = abb)
+df2
 ```
 
 ```{r}
-
+df2 <- rename(df, abbreviation = abb, homicide = murders)
+df2
+```
+```{r}
+names(df2)
 ```
 
 ## dplyr `mutate()` function
 
 ```{r}
-
+names(df)
 ```
 
 ```{r}
+dfprime <- mutate(df, ratio = murders / population)
+dfprime
+```
 
+```{r}
+names(dfprime)
 ```
 
 ### Practice:
 Import the data and create a new column called murder_rate that shows the murder rate (murders per million people)
 
 ```{r}
-
+dfprime <- mutate(df, mpopulation = population / 10^6)
+dfprime <- mutate(dfprime, murder_rate_m = murders / mpopulation)
+dfprime
 
 ```
+```{r}
+dfprime <- mutate(df, murder_rate = murders / population * 10^6)
+dfprime
+```
 
-
-
-  
 ## dplyr `group_by()` function
 
 ```{r}
-
+head(df)
 ```
 
 ```{r}
-
+dfprime <- group_by(df, region)
+dfprime
 ```
 
 ```{r}
+summarise(dfprime, sum(murders))
+```
+
+
+```{r}
+summarise(dfprime, sum(murders), mean(gunownership), median(population))
+```
+
+```{r}
+write.csv(summarise(dfprime, sum(murders), mean(gunownership), median(population)), file = 'report_1.csv')
 
 ```
 
 ## dplyr Pipe Operator %>%
 
 ```{r}
-
+df
 ```
 
 ```{r}
-
+arrange(df, murders) %>% select(state, murders) %>% head(5)
 ```
-
+Import the data and create a new column called murder_rate that shows the murder rate (murders per million people)
 ```{r}
-
+df %>% mutate(murder_rate = murders / population * 10^6) %>% arrange(desc(murder_rate))
 ```
+
+
 ### Practice:
 Find the states with a population greater than 10 million and murders greater than 500. Display only the state, population, and murder columns.
 
 ```{r}
-
+result <- df %>% filter(population > 10^7, murders > 500) %>% select(state, population, murders) %>% arrange(murders)
+print(result)
+result
 ```
-
-
 
 
 \newpage
@@ -1240,29 +1432,75 @@ Find the states with a population greater than 10 million and murders greater th
 ```{r}
 library(dplyr)
 library(ggplot2)
-
+names(df)
 ```
 
 ```{r}
-
+head(df)
 ```
 
+```{r}
+barplot(df$population,
+        xlab = 'State',
+        ylab = 'Population',
+        main = "State vs Population",
+        names.arg = df$state,
+        col = 'blue'
+        )
+```
 
 ```{r}
+dfprime <- arrange(df, desc(murders)) #%>% head(5)
 
+barplot(dfprime$population,
+        xlab = 'State',
+        ylab = 'Population',
+        main = "State vs Population",
+        names.arg = dfprime$state,
+        col = 'red'
+        )
 ```
 
 **Horizontsl Bar Graphs**
 
 ```{r}
+dfprime <- arrange(df, desc(murders)) %>% head(5)
 
+barplot(dfprime$population,
+        xlab = 'Population',
+        ylab = 'State',
+        main = "State vs Population",
+        names.arg = dfprime$state,
+        col = 'green',
+        horiz = TRUE
+        )
 ```
 
 
 ## Histogram
 
 ```{r}
+df <- read.csv('GEStock.csv')
+df
+```
+```{r}
+names(df)
+```
 
+
+
+```{r}
+dim(df)
+```
+
+```{r}
+hist(df$Price,
+     xlab = 'Stock price',
+     main = 'Stock Data',
+     col = 'blue',
+     border = 'black',
+     breaks = 20
+     )
 ```
 
 ## Scatter Plots
@@ -1270,8 +1508,21 @@ library(ggplot2)
 The default of `plot` functions is Scatter plot.
 
 ```{r}
-
+df <- read.csv('murders.csv')
+names(df)
 ```
+
+```{r}
+plot(df$population/10^6, df$murders,
+     xlab = "Populations",
+     ylab = 'Murders',
+     main = 'Population vs Murders',
+     col = 'red',
+     pch = 19
+     )
+```
+
+
 
 
 **pch values**
@@ -1280,11 +1531,13 @@ Values of pch are stored internally as integers.
 
 ![Some values of pch](/Users/saeed/Documents/Work/Python Courses Contents/Fall 2021/untitled folder/pch values.png)
 
-
 ## Line Graphs
 
 ```{r}
-
+plot(df$murders,
+     type = 'b',
+     ylab = 'Murders',
+     col = 'blue')
 ```
 
 **`type` in `plot` function**
@@ -1301,19 +1554,51 @@ Values of pch are stored internally as integers.
 
 ## Box plots
 ```{r}
-
+boxplot(df$murders ~ df$region,
+        col='red',border = 'blue'
+        )
 ```
 
 ## Multiple Plots in Layout
 
 ```{r}
+par(mfrow = c(1, 2))
 
+barplot(df$population / 10^6,
+        main = "State vs Popluation",
+        col = 'red')
+
+barplot(df$murders,
+        main = 'States vs Murders',
+        names.arg = df$state,
+        col = 'green')
 
 ```
 
 ```{r}
+par(mfrow = c(2, 2))
+
+barplot(df$population / 10^6,
+        main = "State vs Popluation",
+        col = 'red')
+
+barplot(df$murders,
+        main = 'States vs Murders',
+        names.arg = df$state,
+        col = 'green')
+
+barplot(df$PopulationDensity / 10^6,
+        main = "State vs Popluation Density",
+        col = 'blue')
+
+plot(df$gunownership,
+        main = 'States vs Gun Ownership',
+        names.arg = df$state,
+        col = 'brown')
 
 ```
+
+
 \newpage
 # Regressions and Models
 
@@ -1321,15 +1606,35 @@ Values of pch are stored internally as integers.
 Linear regression is used to model the relationship between a dependent variable and one or more independent variables by fitting a line through the data.
 
 ```{r}
-
+df
 ```
+```{r}
+model <- lm(murders ~ population, data = df)
+```
+
+```{r}
+summary(model)
+```
+
+
+```{r}
+names(df)
+```
+
 
 ## Multiple linear regression
 Multiple regression extends linear regression by adding more independent variables to better predict the dependent variable.
 
 ```{r}
-
+multi_model <- lm(murders ~ population + gunownership, data = df)
 ```
+
+```{r}
+summary(multi_model)
+```
+
+
+
 
 #### Practice:
 Add `region` (as a categorical variable) to the multiple regression model.
@@ -1337,7 +1642,9 @@ Add `region` (as a categorical variable) to the multiple regression model.
 ```{r}
 # Multiple regression model
 
+multi_model_region <- lm(murders ~ population + gunownership + as.factor(region), data = df)
 
+summary(multi_model_region)
 ```
 
 
@@ -1347,10 +1654,14 @@ A t-test compares the means of two groups to determine if they are statistically
 
 ```{r}
 # Perform a t-test comparing murders between two regions
-#region1 <- df[df$region == "Northeast", "murders"]
-#region2 <- df[df$region == "South", "murders"]
-#t_test_result <- t.test(region1, region2)
-#print(t_test_result)
+region1 <- df[df$region == "Northeast", "murders"]
+region2 <- df[df$region == "South", "murders"]
+
+```
+
+```{r}
+t_test_result <- t.test(region1, region2)
+print(t_test_result)
 ```
 
 
@@ -1359,22 +1670,35 @@ A correlation test checks the strength and direction of the relationship between
 
 ```{r}
 # Correlation test between population and murders
-#cor_test_result <- cor.test(df$population, df$murders)
-#print(cor_test_result)
+cor_test_result <- cor.test(df$population, df$murders)
+print(cor_test_result)
 ```
 
 #### Practice
 
 ```{r}
 # Correlation test gunownership vs murders
-
+cor.test(df$gunownership, df$murders)
 ```
 
+```{r}
+model <- lm(murders ~ population, data = df)
+
+summary(model)
+```
 
  
 ###  Regression Plots
 ```{r}
+plot(df$population, df$murders,
+     xlab = "Populations",
+     ylab = 'Murders',
+     main = 'Population vs Murders',
+     col = 'blue',
+     pch = 19
+     )
 
+abline(model, col = 'red', lwd=2)
 ```
 
 
