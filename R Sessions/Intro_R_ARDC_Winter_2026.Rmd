@@ -7,7 +7,8 @@ author:
 organization: Dalhousie University
 date: Winter 2026
 output:
-  html_notebook:
+  pdf_document:
+    
     toc: yes
     toc_depth: 5
     number_sections: true
@@ -15,8 +16,7 @@ output:
     toc: yes
     toc_depth: 5
     number_sections: true
-  pdf_document:
-    
+  html_notebook:
     toc: yes
     toc_depth: 5
     number_sections: true
@@ -31,8 +31,15 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter* (on Mac) or *Ctrl+Shift+Enter* (on Windows).
 
 ```{r}
-
+plot(cars)
 ```
+```{r}
+library(ggplot2)
+ggplot(data=mtcars, aes(x=wt, y=mpg)) +
+  geom_point(aes(colour = as.factor(cyl)), size=4)
+```
+
+
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I* (on Mac) or *Ctrl+Alt+I* (on Windows).
 
@@ -45,6 +52,8 @@ You can download and install packages with `install.packages("The name of packag
 
 ## Markdown:
 
+$$ \alpha = \beta = \frac{-\alpha \times \theta^3}{\sqrt{}2\times\theta} $$
+
 
 \newpage
 
@@ -55,7 +64,7 @@ In this part we talk about basic elements of R programming.
 ## How to Print
 
 ```{r}
-
+print('This is R programming course!')
 ```
 
 ## Data Types (Classes)
@@ -71,7 +80,12 @@ In R, data types (or classes) define the kind of data stored in variables. Here 
 | `list`      | Represents a collection of different types | A list of numbers, text   | `lst <- list(1, "Hello", TRUE); class(lst)` |
 
 ```{r}
+print(class(3.14))
+print(class('R programming'))
+```
 
+```{r}
+print(class(TRUE))
 ```
 
 ## Arithmetic Operators
@@ -89,21 +103,40 @@ In R, data types (or classes) define the kind of data stored in variables. Here 
 
 
 ```{r}
-
-
+18 + 4
+18 - 4
+18 * 4
+10 / 2
+2 ** 3
+9 ** 0.5
+log(2)
+log10(2)
+14 %% 4
+14 %/% 4
 ```
-
-**We can save values in variables:**
 ```{r}
-
+5 + (4 - 3 * 2)**3 + 1
 ```
+
+
+
 
 In R programming, code runs line by line, with only the last assignment determining the final value of a variable.
 
 ```{r}
-
+x <- 18
+x <- 10
+x <- x * 2 - 3
+x
 ```
+**We can save values in variables:**
 
+```{r}
+x <- 18
+class(x)
+a = 'R programming'
+class(a)
+```
 
 ## Relational Operators
 
@@ -121,34 +154,110 @@ In R programming, code runs line by line, with only the last assignment determin
 
 
 ```{r}
+z <- 10
+y = 6
+assign('x', 2)
+
+x < y
+x >= y
+x != y
+x == y
+
+b = 2
+x <= b
+
+
+x > 1 & y < 10
+x > 1 & y > 10
+x > 1 | y > 10
 
 ```
 
 **you can use below command to get special values:**
 
 ```{r}
+x <- pi
+x
 
+e = exp(1)
+e
+
+x = letters
+x
+
+x <- LETTERS
+x
+
+x <- month.name
+x
+
+x <- month.abb
+x
 ```
 
 **you can write comment with # :**
 ```{r}
+# This is line is comment!
 
+r = 0.2    # interest rate
 ```
 
 **you can creat sequence numbers with below command:**
 
 This work like *arange* in numpy pakage in Python
 ```{r}
+x <- 1:10
+x
+```
 
+```{r}
+x <- 1:10 * 2
+x
+```
+```{r}
+x <- seq(from=1, to=9, by=3)
+x
+```
+```{r}
+x <- seq(1, 10, by=4)
+x
 ```
 This work like *linspace* in numpy pakage in Python
 ```{r}
-
+x <- seq(1, 10, length=3)
+x
 ```
 
 Replicate function:
 ```{r}
+x <- 1:3
+x
+```
+```{r}
+y <- rep(x, time=5)
+y
+```
+```{r}
+y <- rep(x, each=5)
+y
+```
 
+### Practice:
+
+Simulate GDP growth from the year 2000 to 2025 with an annual growth rate of 3% starting from 1000 units.
+
+$$GDP_{t} = 1000 \cdot (1+r)^{n}$$
+```{r}
+years = 0:25
+growth_rate = 0.03 # 3% annual rate
+GDP <- 1000 * (1+growth_rate)^years
+print(GDP)
+```
+```{r}
+years = 2000:2025
+growth_rate = 0.03 # 3% annual rate
+GDP <- 1000 * (1+growth_rate)^(years-2000)
+print(GDP)
 ```
 
 
@@ -156,13 +265,47 @@ Replicate function:
 ### if , elif
 
 ```{r}
+age <- 14
 
+if (age >= 18){
+  print('You are old enough to vote!')
+} else {
+  print('You can NOT vote yet!')
+  print(paste('You can will vote after', 18 - age, "years."))
+}
+
+```
+
+
+```{r}
+age = 16
+
+if (age <= 4){
+  price = 0
+} else if (age < 16){
+  price = 5
+} else {
+#} else if (age >= 16){
+  price = 10
+}
+
+print(paste("Your cost is $", price,'.'))
 ```
 
 ### for loops
 
 ```{r}
-
+for (i in 1:5){
+  print(i**i)
+  
+}
+```
+```{r}
+z = 0
+for (i in 1:10){
+  z = z + i
+  print(z)
+}
 ```
 
 
@@ -170,19 +313,88 @@ Replicate function:
 
 
 ```{r}
+i <- 1
 
+while (i <= 10){
+  print(i)
+  i <- i + 1
+}
 ```
+
 
 
 **Use break and next in loops**
 
 ```{r}
+for (i in 1:10){
+  if (i==5){
+    break
+  }
+  print(i)
+}
+```
+```{r}
+for (i in 1:10){
+  if (i==5){
+    next
+  }
+  print(i)
+}
+```
 
+### Practice:
+
+Write a conditional statement to check whether the variable is positive, negative, or zero and print the appropriate message.
+
+```{r}
+x = 0
+if (x > 0){
+  print("Positive")
+} else if (x < 0){
+  print('negative')
+} else {
+  print("Zero")
+}
 ```
 
 
-
 ## function
+```{r}
+average = function(a, b, c){
+  summ = a + b + c
+  ave = summ / 3
+  return(ave)
+}
+
+average(34, 13, -21)
+```
+
+$$ K_n = K \times(1+r)^n$$
+```{r}
+future_value = function(k, r, n){
+  k_n = k * (1+r)^n
+  return(k_n)
+}
+```
+
+```{r}
+future_value(1000, 0.05, 10)
+future_value(500, 0.10, 5)
+```
+
+### Practice I:
+
+Write a function `temp()` that converts a temperature in Celsius to Fahrenheit.
+
+$$F=(C\times\frac{9}{5})+32$$
+```{r}
+
+```
+
+### Practice II:
+
+Write a function in R that takes a number as input and returns whether the number is even or odd.
+
 ```{r}
 
 ```
@@ -192,69 +404,211 @@ Replicate function:
 # Vetors
 The most common way to creat vectors is to use function `c()`.
 ```{r}
+x <- c(10.25, 3.5, 8.75, 25, 12)
+x
+```
 
+```{r}
+x <- c('a', "b", "C")
+x
+```
+```{r}
+x <- c(10.25, 3.5, 8.75, 25, 12, "A", 'b', "C")
+x
+```
+```{r}
+class(x)
 ```
 
 **Join vectors**
 
 ```{r}
+x <- c(10,20,30,40)
+y <- c(3.5, 4.75)
 
+z <- c(x, y)
+z
 ```
+
 
 You can find _lenght_ of vectors with _lenght()_ function:
 ```{r}
-
+x <- c(10.25, 3.5, 8.75, 25, 12)
+x
+```
+```{r}
+length(x)
+```
+```{r}
+length(z)
 ```
 
 ## Vector Indexing
 
 ```{r}
-
+x
 ```
+```{r}
+for (i in x){
+  print(i)
+}
+```
+
 Use for loops for access to elemets of vectors
 
 ```{r}
+for (i in 1:length(x)){
+  print(x[i])
+}
 
 ```
 Use index:
 ```{r}
+x
+```
 
+```{r}
+x[2]
+```
+
+```{r}
+x[-2]
+```
+
+```{r}
+x[1:3]
+```
+
+```{r}
+x[c(1, 3, 4)]
+```
+
+```{r}
+x[2] = -18
+```
+
+```{r}
+x
+```
+
+```{r}
+x[-3] 
+```
+
+
+```{r}
+x[-3] = 0
+x
+```
+
+```{r}
+x <- c(10.25, 3.5, 8.75, 25, 12)
+x
+```
+
+```{r}
+y <- c(TRUE, FALSE, TRUE, TRUE, FALSE)
+x[y]
 ```
 
 ## Matching Operator
 
 ```{r}
-
+x <- c(10,45,30,56,40,80)
+x
 ```
+```{r}
+30 %in% x
+37 %in% x
+```
+
+```{r}
+y <- c(30, 37, 40)
+y %in% x
+```
+
 ## Vector Arithmetic's
 
 ```{r}
-
+x
 ```
 
 ```{r}
+x + 2
+```
 
+```{r}
+x = x * 2
+x
+```
+
+```{r}
+sqrt(x)
+```
+
+```{r}
+x <- c(10,45,30,50)
+y <- c(5,1,3,4)
+
+x + y
+```
+
+```{r}
+z <- c(10,20,30)
+x + z
 ```
 
 
 ## Vector Methods
 
 ```{r}
-
+x <- c(10,45,30,50)
+length(x)
 ```
 
 ```{r}
-
+sum(x)
 ```
+
+```{r}
+prod(x)
+```
+
+```{r}
+rev(x)
+```
+
+```{r}
+sort(x, decreasing = TRUE)
+```
+
+```{r}
+x <- c(10,45,30,50)
+y <- c(5,1,3,4)
+
+x %*% y
+```
+
+
+
 ## Logical Vector
 
 ```{r}
-
+x
 ```
 
 ```{r}
-
+y <- x > 30 & x < 50
+y
 ```
+```{r}
+x[y]
+```
+
+```{r}
+x[which((x>30))]
+```
+
 
 
 ## Factors
@@ -264,22 +618,68 @@ Use index:
 
 ```{r}
 x <- c('Male', "Female", "Male", 'Male', "Female")
+x
 ```
+
+```{r}
+x <- factor(c('Male', "Female", "Male", 'Male', "Female"))
+x
+```
+
+```{r}
+table(x)
+```
+
 
 ## Mathematical Function in R
 
 ```{r}
-
+x <- c(4.235, -3.548, 5.324, 7.892)
+x
 ```
 
 ```{r}
-
+abs(x)
 ```
+
+```{r}
+ceiling(x)  # next integer
+```
+
+```{r}
+floor(x)  # smaller integer
+```
+
+```{r}
+round(x)
+```
+
+```{r}
+round(x, digits = 2)
+```
+
+```{r}
+sqrt(abs(x))
+```
+
+```{r}
+log10(abs(x))
+```
+
 
 ## Random Number in R
 
 ```{r} 
+x <- rnorm(1000)
+#x
+```
 
+```{r}
+mean(x)
+```
+
+```{r}
+sd(x)
 ```
 
 
@@ -291,6 +691,13 @@ Given a list of students `("Alice", "Bob", "Charlie", "David", "Eve")` and their
 students <- c("Alice", "Bob", "Charlie", "David", "Eve")
 scores <- c(85, 92, 78, 55, 88)
 
+passed <- scores >= 60
+
+scores[passed]
+
+students[passed]
+
+mean(scores[passed])
 ```
 
 \newpage
@@ -301,7 +708,48 @@ scores <- c(85, 92, 78, 55, 88)
 Matrix are 2-dimentsional vectors and Dimensianal attribute is of lenght 2 (rows and columns). We should to know that Matrix contain elemts of same type.
 
 ```{r}
+m = matrix(nrow = 2, ncol = 3)
+m
+```
 
+```{r}
+dim(m)
+```
+
+```{r}
+m <- matrix(c(1,2,3,4,5,6))
+m
+```
+
+```{r}
+m <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+m
+```
+
+```{r}
+m <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3, byrow = TRUE)
+m
+```
+
+```{r}
+m <- matrix(seq(from = 1, to = 40, by = 2), nrow = 4, ncol = 5, byrow = TRUE)
+m
+```
+
+```{r}
+dim(m)
+```
+
+```{r}
+nrow(m)
+```
+
+```{r}
+ncol(m)
+```
+
+```{r}
+length(m)
 ```
 
 ## Matrix diag
@@ -309,39 +757,99 @@ Matrix are 2-dimentsional vectors and Dimensianal attribute is of lenght 2 (rows
 like `numpy.full` in python
 
 ```{r}
-
+m <- matrix(4, 3,3)
+m
 ```
 
 like `numpy.diag` in python
 
 ```{r}
-
+m <- diag(1, 3,3)
+m
 ```
+
+```{r}
+diag(4)
+```
+
+```{r}
+diag(1:5)
+```
+
+
+
 
 for find the elements of diagonal of matrix:
 
 ```{r}
-
+m <- matrix(seq(from = 1, to = 40, by = 2), nrow = 4, ncol = 5, byrow = TRUE)
+m
 ```
+
+```{r}
+diag(m)
+```
+
 
 ## Matrix: Naming Rows & Columns
 
 ```{r}
-
+m <- matrix(seq(from = 1, to = 40, by = 2), nrow = 4, ncol = 5, byrow = TRUE)
+m
 ```
+
+```{r}
+rownames(m) = c('A', "b", 'F', 'S')
+colnames(m) = c('B', "W", 'X', 'S', "L")
+```
+
+```{r}
+m
+```
+
 
 ## Matrix Indexing
 
 Indexing in R programming is similar to Python.
 
 ```{r}
+m <- matrix(seq(from = 1, to = 40, by = 2), nrow = 4, ncol = 5, byrow = TRUE)
+m
+```
 
+```{r}
+m[1,] # for get single row
+```
+
+```{r}
+m[,3] # for get single column
+```
+
+```{r}
+m[2,3]
+```
+
+```{r}
+m[2,2:4]
+```
+
+```{r}
+m[1:3,2:4]
+```
+
+```{r}
+m[,-2]
+```
+
+```{r}
+m
 ```
 
 You can change values in matrix.
 
 ```{r}
-
+m[2,3] = 0
+m
 ```
 ## Matrix: `rbine()` and `cbind()` functions
 
@@ -349,12 +857,22 @@ You can combine matrices with `rbine()` and `cbind()` functions.
 
 At first, we want to combine the matrices from the row.
 ```{r}
-
+A <- matrix(c(1,2,3,4,5,6,8,9,1) , nrow=3, ncol=3, byrow=TRUE)
+A
 ```
+
+```{r}
+B <- rbind(A, c(10,11,12))
+B
+```
+
+
+
 After that, we want to combine the matrices from the columns.
 
 ```{r}
-
+C <- cbind(A, c(10,11,12))
+C
 ```
 
 Relational Operators in Matrics:
@@ -363,21 +881,56 @@ Relational Operators in Matrics:
 A <- matrix(c(1,2,3,4,5,6,8,9,1) , nrow=3, ncol=3, byrow=TRUE)
 B <- matrix(c(3,1,2,4,2,1,5,1,2), nrow=3, ncol=3, byrow=TRUE)
 
-
+A
+B
 ```
 
+```{r}
+A + B
+A - B
+```
+
+```{r}
+A * B
+A / B
+```
+
+```{r}
+A %*% B
+```
+ 
  
 Like `numpy.transpose()` or `.T` in python
 
 ```{r}
 A <- matrix(c(1,2,3,4,5,6,8,9,1,4,2,3) , nrow=3, ncol=4, byrow=TRUE)
 
+t(A)
+
 ```
 ## Matrix Specific Functions
 
 ```{r}
+A
+```
+```{r}
+rowSums(A)
+colSums((A))
+rowMeans((A))
+colMeans(A)
+```
+
+### Practice I
+Create a 4x4 matrix of random integers between 1 and 100.
+
+- Print the matrix.
+- Calculate the row-wise sum and column-wise mean.
+- Check if the matrix is symmetric by comparing it to its transpose.
+
+```{r}
 
 ```
+
 
 \newpage
 # Lists
@@ -390,17 +943,9 @@ A <- matrix(c(1,2,3,4,5,6,8,9,1,4,2,3) , nrow=3, ncol=4, byrow=TRUE)
 ```
 Creat list with vectors
 ```{r}
+classno <- c(101,102,103)
+name <- c("Sanaz", "Saeed", "Sarah")
+scores <- c(98.45, 45.65, 78.79)
 
-```
-
-## List subset Operator
-
-```{r}
-
-```
-
-## Lists Concatenation
-
-```{r}
 
 ```
